@@ -6,8 +6,6 @@ from email_validator import validate_email, EmailNotValidError
 import os
 
 app = Flask(__name__)
-if not os.path.exists("klanten.db"):
-    init_db()
 app.secret_key = 'geheim'
 
 DATABASE = 'klanten.db'
@@ -90,6 +88,11 @@ def toevoegen():
         return redirect(url_for('index'))
     return render_template('form.html', klant={})
 
-if __name__ == '__main__':
+@app.before_first_request
+def setup_db():
     init_db()
+
+if __name__ == '__main__':
     app.run(debug=True)
+
+
