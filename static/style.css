@@ -1,0 +1,9 @@
+body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+h1 { color: #333; }
+table { width: 100%; border-collapse: collapse; margin-top: 1em; background: #fff; }
+th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+a { text-decoration: none; color: #0077cc; }
+.fouten { color: red; }
+form input, form textarea { width: 300px; margin: 5px 0; }
+form textarea { height: 60px; }
+form button { padding: 5px 10px; }
