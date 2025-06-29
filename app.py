@@ -88,11 +88,14 @@ def toevoegen():
         return redirect(url_for('index'))
     return render_template('form.html', klant={})
 
-@app.before_first_request
-def setup_db():
-    init_db()
-
 if __name__ == '__main__':
+    # Alleen lokaal draaien
+    if not os.path.exists("klanten.db"):
+        init_db()
     app.run(debug=True)
+else:
+    # Render of andere server
+    if not os.path.exists("klanten.db"):
+        init_db()
 
 
