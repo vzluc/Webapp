@@ -26,4 +26,13 @@
         <label>Gemeente: <input name="klantgemeente" value="{{ klant.get('klantgemeente', '') }}"></label><br>
         <label>Land: <input name="klantland" value="{{ klant.get('klantland', '') }}"></label><br>
         <label>BTW-nummer: <input name="klantbtwnr" value="{{ klant.get('klantbtwnr', '') }}"></label><br>
-        <label>Tel: <input name="klanttel" value="{{ klan
+        <label>Tel: <input name="klanttel" value="{{ klant.get('klanttel', '') }}"></label><br>
+        <label>Mob: <input name="klantmob" value="{{ klant.get('klantmob', '') }}"></label><br>
+        <label>Email: <input name="klantemail" value="{{ klant.get('klantemail', '') }}"></label><br>
+        <label>Website: <input name="klantwebsite" value="{{ klant.get('klantwebsite', '') }}"></label><br>
+        <label>Info: <textarea name="klantinfo">{{ klant.get('klantinfo', '') }}</textarea></label><br>
+        <button type="submit">Opslaan</button>
+        <a href="{{ url_for('index') }}">Annuleren</a>
+    </form>
+</body>
+</html>
