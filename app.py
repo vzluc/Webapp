@@ -56,7 +56,7 @@ def validate_klant(data):
 
     return errors
 
-@app.route('/')
+@app.route('/', methods=['GET', 'HEAD'])
 def index():
     db = connect_db()
     klanten = db.execute("SELECT * FROM klanten WHERE actief=1 ORDER BY klantnaam").fetchall()
