@@ -3,8 +3,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 import re
 from email_validator import validate_email, EmailNotValidError
+import os
 
 app = Flask(__name__)
+if not os.path.exists("klanten.db"):
+    init_db()
 app.secret_key = 'geheim'
 
 DATABASE = 'klanten.db'
