@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Klant toevoegen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Klant toevoegen</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="fouten">
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <label>Klantnr: <input name="klantnr" value="{{ klant.get('klantnr', '') }}"></label><br>
+        <label>Klantnaam*: <input name="klantnaam" value="{{ klant.get('klantnaam', '') }}"></label><br>
+        <label>Adres: <input name="klantadres" value="{{ klant.get('klantadres', '') }}"></label><br>
+        <label>Postcode: <input name="klantpostcode" value="{{ klant.get('klantpostcode', '') }}"></label><br>
+        <label>Gemeente: <input name="klantgemeente" value="{{ klant.get('klantgemeente', '') }}"></label><br>
+        <label>Land: <input name="klantland" value="{{ klant.get('klantland', '') }}"></label><br>
+        <label>BTW-nummer: <input name="klantbtwnr" value="{{ klant.get('klantbtwnr', '') }}"></label><br>
+        <label>Tel: <input name="klanttel" value="{{ klan
