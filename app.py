@@ -90,7 +90,7 @@ def toevoegen():
 
 # Voeg route voor bewerken toe in app.py
 
-app_path = Path("/mnt/data/bedrijfssoftware_klantenapp/app.py")
+app_path = Path("/Webapp/app.py")
 app_code = app_path.read_text()
 
 # Nieuwe route voor klant bewerken toevoegen
