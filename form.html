@@ -2,11 +2,11 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>{{ 'Klant bewerken' if klant.get('klantid') else 'Klant toevoegen' }}</title>
+    <title>Klant toevoegen</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>{{ 'Klant bewerken' if klant.get('klantid') else 'Nieuwe klant toevoegen' }}</h1>
+    <h1>Klant toevoegen</h1>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -19,9 +19,6 @@
     {% endwith %}
 
     <form method="post">
-        {% if klant.get('klantid') %}
-            <input type="hidden" name="klantid" value="{{ klant['klantid'] }}">
-        {% endif %}
         <label>Klantnr: <input name="klantnr" value="{{ klant.get('klantnr', '') }}"></label><br>
         <label>Klantnaam*: <input name="klantnaam" value="{{ klant.get('klantnaam', '') }}"></label><br>
         <label>Adres: <input name="klantadres" value="{{ klant.get('klantadres', '') }}"></label><br>
@@ -34,7 +31,7 @@
         <label>Email: <input name="klantemail" value="{{ klant.get('klantemail', '') }}"></label><br>
         <label>Website: <input name="klantwebsite" value="{{ klant.get('klantwebsite', '') }}"></label><br>
         <label>Info: <textarea name="klantinfo">{{ klant.get('klantinfo', '') }}</textarea></label><br>
-        <button type="submit">{{ 'Wijzigen' if klant.get('klantid') else 'Opslaan' }}</button>
+        <button type="submit">Opslaan</button>
         <a href="{{ url_for('index') }}">Annuleren</a>
     </form>
 </body>

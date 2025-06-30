@@ -88,6 +88,53 @@ def toevoegen():
         return redirect(url_for('index'))
     return render_template('form.html', klant={})
 
+# Voeg route voor bewerken toe in app.py
+
+app_path = Path("/mnt/data/bedrijfssoftware_klantenapp/app.py")
+app_code = app_path.read_text()
+
+# Nieuwe route voor klant bewerken toevoegen
+bewerken_route = '''
+@app.route('/bewerken/<int:klantid>', methods=['GET', 'POST'])
+def bewerken(klantid):
+    db = connect_db()
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+        if errors:
+            for error in errors:
+                flash(error)
+            data['klantid'] = klantid
+            return render_template('form.html', klant=data)
+        db.execute("""UPDATE klanten SET
+            klantnr=?, klantnaam=?, klantadres=?, klantpostcode=?, klantgemeente=?,
+            klantland=?, klantbtwnr=?, klanttel=?, klantmob=?, klantemail=?,
+            klantwebsite=?, klantinfo=? WHERE klantid=?""",
+            (data['klantnr'], data['klantnaam'], data['klantadres'], data['klantpostcode'],
+             data['klantgemeente'], data['klantland'], data['klantbtwnr'], data['klanttel'],
+             data['klantmob'], data['klantemail'], data['klantwebsite'], data['klantinfo'],
+             klantid)
+        )
+        db.commit()
+        flash("Klant gewijzigd.")
+        return redirect(url_for('index'))
+    klant = db.execute("SELECT * FROM klanten WHERE klantid=?", (klantid,)).fetchone()
+    db.close()
+    if klant is None:
+        flash("Klant niet gevonden.")
+        return redirect(url_for('index'))
+    return render_template('form.html', klant=klant)
+'''
+
+# Voeg de nieuwe route toe na de bestaande routes
+if "def bewerken(" not in app_code:
+    insertion_point = app_code.rfind("if __name__")  # Voeg toe vóór main block
+    new_code = app_code[:insertion_point] + bewerken_route + "\n\n" + app_code[insertion_point:]
+    app_path.write_text(new_code)
+
+"Route '/bewerken/<klantid>' toegevoegd aan app.py ✅"
+
+
 if __name__ == '__main__':
     # Alleen lokaal draaien
     if not os.path.exists("klanten.db"):
