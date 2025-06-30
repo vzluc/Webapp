@@ -92,7 +92,6 @@ def toevoegen():
 
 app_path = Path("/Webapp/app.py")
 app_code = app_path.read_text()
-
 # Nieuwe route voor klant bewerken toevoegen
 bewerken_route = '''
 @app.route('/bewerken/<int:klantid>', methods=['GET', 'POST'])
