@@ -77,38 +77,49 @@ def klanten():
             return render_template('klanten.html', klant=data)
 
 @app.route('/Leveranciers', methods=['GET', 'POST'])
-        if errors:
-            for error in errors:
-                flash(error)
-            return render_template('leveranciers.html', klant=data)
+def leveranciers():
+    errors = []
+
+    if errors:
+        for error in errors:
+            flash(error)
+        return render_template('leveranciers.html', klant=data)
 
 @app.route('/Bestelbons', methods=['GET', 'POST'])
 def Bestelbons():
-       if errors:
-            for error in errors:
-                flash(error)
-            return render_template('bestelbons.html', klant=data)
+    errors = []
+
+    if errors:
+        for error in errors:
+            flash(error)
+        return render_template('bestelbons.html', klant=data)
 
 @app.route('/Leverbons', methods=['GET', 'POST'])
 def Leverbons():
-         if errors:
-            for error in errors:
-                flash(error)
-            return render_template('leverbons.html', klant=data)
+    errors = []
+
+    if errors:
+        for error in errors:
+            flash(error)
+        return render_template('leverbons.html', klant=data)
 
 @app.route('/Facturen', methods=['GET', 'POST'])
 def Facturen():
-        if errors:
-            for error in errors:
-                flash(error)
-            return render_template('facturen.html', klant=data)
+    errors = []
+
+    if errors:
+        for error in errors:
+            flash(error)
+        return render_template('facturen.html', klant=data)
 
 @app.route('/Orders', methods=['GET', 'POST'])
 def Orders():
-         if errors:
-            for error in errors:
-                flash(error)
-            return render_template('orders.html', klant=data)
+    errors = []
+
+    if errors:
+        for error in errors:
+            flash(error)
+        return render_template('orders.html', klant=data)
 
 
 @app.route('/toevoegen', methods=['GET', 'POST'])
