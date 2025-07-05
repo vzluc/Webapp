@@ -66,7 +66,7 @@ def index():
     return render_template('index.html', klanten=klanten)
 
 @app.route('/Klanten', methods=['GET', 'POST'])
-def Klanten():
+def klanten():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
@@ -75,6 +75,61 @@ def Klanten():
             for error in errors:
                 flash(error)
             return render_template('klanten.html', klant=data)
+
+@app.route('/Leveranciers', methods=['GET', 'POST'])
+def klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('leveranciers.html', klant=data)
+
+@app.route('/Bestelbons', methods=['GET', 'POST'])
+def klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('bestelbons.html', klant=data)
+
+@app.route('/Leverbons', methods=['GET', 'POST'])
+def klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('leverbons.html', klant=data)
+
+@app.route('/Facturen', methods=['GET', 'POST'])
+def klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('facturen.html', klant=data)
+
+@app.route('/Orders', methods=['GET', 'POST'])
+def klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('orders.html', klant=data)
 
 
 @app.route('/toevoegen', methods=['GET', 'POST'])
