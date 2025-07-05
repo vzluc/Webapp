@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Klantenlijst</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Actieve Klanten</h1>
+    <a href="{{ url_for('toevoegen') }}">➕ Nieuwe klant toevoegen</a>
+    <table>
+        <thead>
+            <tr><th>Nr</th><th>Naam</th><th>Adres</th><th>Email</th><th>Telefoon</th></tr>
+        </thead>
+        <tbody>
+        {% for klant in klanten %}
+            <tr>
+                <td>{{ klant['klantnr'] }}</td>
+                <td>{{ klant['klantnaam'] }}</td>
+                <td>{{ klant['klantadres'] }}, {{ klant['klantpostcode'] }} {{ klant['klantgemeente'] }}</td>
+                <td>{{ klant['klantemail'] }}</td>
+                <td>{{ klant['klanttel'] or klant['klantmob'] }}</td>
+                <td><a href="{{ url_for('bewerken', klantid=klant['klantid']) }}">✏️ Bewerken</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<p>Debug: {{ klanten|length }} klanten gevonden.</p>
+</body>
+</html>
