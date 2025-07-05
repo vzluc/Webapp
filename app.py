@@ -65,6 +65,18 @@ def index():
     db.close()
     return render_template('index.html', klanten=klanten)
 
+@app.route('/Klanten', methods=['GET', 'POST'])
+def Klanten():
+    if request.method == 'POST':
+        data = {k: format_text(v) for k, v in request.form.items()}
+        errors = validate_klant(data)
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return render_template('klanten.html', klant=data)
+
+
 @app.route('/toevoegen', methods=['GET', 'POST'])
 def toevoegen():
     if request.method == 'POST':

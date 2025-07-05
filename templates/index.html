@@ -2,28 +2,16 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Klantenlijst</title>
+    <title>Revolta BV</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Actieve Klanten</h1>
-    <a href="{{ url_for('toevoegen') }}">➕ Nieuwe klant toevoegen</a>
-    <table>
-        <thead>
-            <tr><th>Nr</th><th>Naam</th><th>Adres</th><th>Email</th><th>Telefoon</th></tr>
-        </thead>
-        <tbody>
-        {% for klant in klanten %}
-            <tr>
-                <td>{{ klant['klantnr'] }}</td>
-                <td>{{ klant['klantnaam'] }}</td>
-                <td>{{ klant['klantadres'] }}, {{ klant['klantpostcode'] }} {{ klant['klantgemeente'] }}</td>
-                <td>{{ klant['klantemail'] }}</td>
-                <td>{{ klant['klanttel'] or klant['klantmob'] }}</td>
-                <td><a href="{{ url_for('bewerken', klantid=klant['klantid']) }}">✏️ Bewerken</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</body>
+    <h1>Revolta BV</h1>
+    <a href="{{ url_for('Klanten') }}">Klanten</a><br>
+    <a href="{{ url_for('Leveranciers') }}">Leveranciers</a><br>
+    <a href="{{ url_for('Facturen') }}">Facturen</a><br>
+    <a href="{{ url_for('Bestelbons') }}">Bestelbons</a><br>
+    <a href="{{ url_for('Leverbons') }}">Leverbons</a><br>
+    <a href="{{ url_for('Orders') }}">Orders</a><br>
+    <a href="{{ url_for('Werkbons') }}">Werkbons</a>
+
 </html>
