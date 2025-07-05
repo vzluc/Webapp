@@ -20,7 +20,6 @@
                 <td>{{ klant['klantadres'] }}, {{ klant['klantpostcode'] }} {{ klant['klantgemeente'] }}</td>
                 <td>{{ klant['klantemail'] }}</td>
                 <td>{{ klant['klanttel'] or klant['klantmob'] }}</td>
-                <td><a href="{{ url_for('bewerken', klantid=klant['klantid']) }}">✏️ Bewerken</a></td>
             </tr>
         {% endfor %}
         </tbody>
