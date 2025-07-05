@@ -4,6 +4,7 @@ import sqlite3
 import re
 from email_validator import validate_email, EmailNotValidError
 import os
+from pathlib import Path
 
 app = Flask(__name__)
 app.secret_key = 'geheim'
