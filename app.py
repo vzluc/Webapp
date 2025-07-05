@@ -77,7 +77,7 @@ def klanten():
             return render_template('klanten.html', klant=data)
 
 @app.route('/Leveranciers', methods=['GET', 'POST'])
-def klanten():
+def Leveranciers():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
@@ -88,7 +88,7 @@ def klanten():
             return render_template('leveranciers.html', klant=data)
 
 @app.route('/Bestelbons', methods=['GET', 'POST'])
-def klanten():
+def Bestelbons():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
@@ -99,7 +99,7 @@ def klanten():
             return render_template('bestelbons.html', klant=data)
 
 @app.route('/Leverbons', methods=['GET', 'POST'])
-def klanten():
+def Leverbons():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
@@ -110,7 +110,7 @@ def klanten():
             return render_template('leverbons.html', klant=data)
 
 @app.route('/Facturen', methods=['GET', 'POST'])
-def klanten():
+def Facturen():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
@@ -121,7 +121,7 @@ def klanten():
             return render_template('facturen.html', klant=data)
 
 @app.route('/Orders', methods=['GET', 'POST'])
-def klanten():
+def Orders():
     if request.method == 'POST':
         data = {k: format_text(v) for k, v in request.form.items()}
         errors = validate_klant(data)
