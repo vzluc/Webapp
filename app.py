@@ -89,12 +89,6 @@ def toevoegen():
         return redirect(url_for('index'))
     return render_template('form.html', klant={})
 
-# Voeg route voor bewerken toe in app.py
-
-app_path = Path("app.py")
-app_code = app_path.read_text()
-# Nieuwe route voor klant bewerken toevoegen
-bewerken_route = '''
 @app.route('/bewerken/<int:klantid>', methods=['GET', 'POST'])
 def bewerken(klantid):
     db = connect_db()
@@ -124,16 +118,6 @@ def bewerken(klantid):
         flash("Klant niet gevonden.")
         return redirect(url_for('index'))
     return render_template('form.html', klant=klant)
-'''
-
-# Voeg de nieuwe route toe na de bestaande routes
-if "def bewerken(" not in app_code:
-    insertion_point = app_code.rfind("if __name__")  # Voeg toe vóór main block
-    new_code = app_code[:insertion_point] + bewerken_route + "\n\n" + app_code[insertion_point:]
-    app_path.write_text(new_code)
-
-"Route '/bewerken/<klantid>' toegevoegd aan app.py ✅"
-
 
 if __name__ == '__main__':
     # Alleen lokaal draaien
